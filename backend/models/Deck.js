@@ -8,11 +8,13 @@ const CardSchema = new mongoose.Schema({
 const DeckSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   title: { type: String, required: true },
-  description: String,
+  description: {type:String,},
+  coverImage: { type: String, required: false },
   format: { type: String, default: 'Casual' }, // ej: Commander, Modern
   mainboard: [CardSchema],
   sideboard: [CardSchema],
   maybeboard: [CardSchema],
+  commander: [CardSchema],
   createdAt: { type: Date, default: Date.now },
 });
 

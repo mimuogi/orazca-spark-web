@@ -15,6 +15,7 @@ const PostSchema = new mongoose.Schema({
   title: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
   authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  coverImage: { type: String, required: false },
   contentMarkdown: { type: String, required: true },
   tags: [String],
   votes: [VoteSchema],

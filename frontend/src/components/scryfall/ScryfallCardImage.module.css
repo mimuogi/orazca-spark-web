@@ -1,0 +1,13 @@
+/* ScryfallCardImage.module.css */
+.image {
+    border-radius: 0.75rem; /* rounded-xl */
+  }
+  
+  .loading {
+    color: #6b7280; /* text-gray-500 */
+  }
+  
+  .error {
+    color: #ef4444; /* text-red-500 */
+  }
+  

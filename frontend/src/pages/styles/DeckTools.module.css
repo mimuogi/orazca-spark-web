@@ -1,0 +1,22 @@
+.container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .toolSection {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  
+  .toolSection h2 {
+    margin-top: 0;
+  }
+  
+  .toolSection p {
+    color: #555;
+  }
+  

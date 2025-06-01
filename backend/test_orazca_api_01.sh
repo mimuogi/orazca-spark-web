@@ -62,7 +62,8 @@ DECK_ID=$(curl -s -X POST $API/decks \
     "format":"Standard",
     "mainboard":[{"name":"Llanowar Elves","quantity":4}],
     "sideboard":[],
-    "maybeboard":[]
+    "maybeboard":[],
+    "commander": []
   }' | jq -r ._id)
 [ -n "$DECK_ID" ] || (echo "❌ No se creó mazo" && exit 1)
 echo "🃏 Mazo ID: $DECK_ID"

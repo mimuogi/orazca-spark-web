@@ -9,6 +9,8 @@ import DeckList from './pages/DeckList';
 import DeckDetail from './pages/DeckDetail';
 import Profile from './pages/UserProfile';
 import DeckCollection from './pages/DeckCollection';
+import DeckTools from './pages/DeckTools';
+import ManaTool from './pages/ManaTool';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/decks/:id" element={<DeckDetail />} />
         <Route path="/deck-collection" element={<DeckCollection />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/tools" element={<DeckTools/>}/>
+        <Route path="/tools/mana" element={<ManaTool />} />
       </Routes>
     </>
   );
