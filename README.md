@@ -116,12 +116,15 @@ Accessible at the root endpoint:
 
 ## 🧙 About
 
-Created with ❤️ by @yourusername as a personal MTG project to learn, share and build community tools.
+Created with ❤️ by @mimuogi as a personal MTG project to learn, share and build community tools.
 
 Future plans include:
 
 - Deck search
 - User profiles
+- Deck tools
+- Hypergeometric Calculator
+- Mana base analysis
 - Online store
 
 ---
