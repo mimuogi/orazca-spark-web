@@ -77,40 +77,6 @@ const ManaAnalysisResult = ({ result }) => {
   </table>
 </section>
 
-{stats.pipNeeds?.length > 0 && (
-  <section className={styles.section}>
-    <h3>🔶 Pip Difficulty</h3>
-    <p className={styles.tooltip}>
-      Estimated sources needed to cast each spell by turn 3 with ≥80% probability.
-    </p>
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Card</th>
-          <th>Cost</th>
-          <th>Needed</th>
-          <th>Available</th>
-          <th>Prob</th>
-        </tr>
-      </thead>
-      <tbody>
-        {stats.pipNeeds
-          .sort((a, b) => (b.neededSources || 0) - (a.neededSources || 0))
-          .map((entry) => (
-            <tr key={entry.name}>
-              <td>{entry.name}</td>
-              <td>{entry.pipGroups.map(p => `${p[1]} ${p[0]}`).join(' + ')}</td>
-              <td className={entry.warning ? styles.low : styles.high}>
-                {entry.neededSources ?? '—'}
-              </td>
-              <td>{entry.availableSources}</td>
-              <td>{(entry.prob * 100).toFixed(0)}%</td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
-  </section>
-)}
 
     </div>
   );
