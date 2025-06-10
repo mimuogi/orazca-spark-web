@@ -12,6 +12,8 @@ import DeckCollection from './pages/DeckCollection';
 import DeckTools from './pages/DeckTools';
 import ManaTool from './pages/ManaTool';
 import CalculatorsPage from './pages/CalculatorsPage';
+import CardDetails from './pages/CardDetails';
+import './App.css'; // Global styles
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path="/tools" element={<DeckTools/>}/>
         <Route path="/tools/mana" element={<ManaTool />} />
         <Route path="/tools/calculators" element={<CalculatorsPage />} />
+        <Route path="/card/:name" element={<CardDetails />} />
       </Routes>
     </>
   );
