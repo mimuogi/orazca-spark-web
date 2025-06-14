@@ -33,3 +33,7 @@ const usersRoutes = require('./routes/users');
 app.use('/api/users', usersRoutes)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
+
+const uploadRoutes = require('./routes/uploads');
+app.use('/api/uploads', uploadRoutes);
+app.use('/uploads', express.static('uploads'));

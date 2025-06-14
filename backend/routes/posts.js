@@ -4,6 +4,13 @@ const Post = require('../models/Post');
 const { verifyToken } = require('../middleware/authMiddleware');
 const { updateVoteCounts } = require('../utils/voteUtils');
 
+const slugify = (str) =>
+  str
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, '-');
+
 // GET all públicos
 router.get('/', async (req, res) => {
   const posts = await Post.find({ status: 'public' })
@@ -30,8 +37,10 @@ router.get('/:id', async (req, res) => {
 // CREATE
 router.post('/', verifyToken, async (req, res) => {
   try {
+    const slug = slugify(req.body.title);
     const post = new Post({
       ...req.body,
+      slug,
       authorId: req.user.userId
     });
     const saved = await post.save();
