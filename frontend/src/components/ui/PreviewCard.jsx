@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card ({ children, className = '', ...props }){
+function PreviewCard ({ children, className = '', ...props }){
   return (
     <div
       className={`border rounded shadow bg-white ${className}`}
@@ -11,4 +11,4 @@ function Card ({ children, className = '', ...props }){
   );
 };
 
-export default Card;
+export default PreviewCard;

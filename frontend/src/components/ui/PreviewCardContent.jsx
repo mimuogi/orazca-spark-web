@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CardContent ({ children, className = '', ...props }){
+function PreviewCardContent ({ children, className = '', ...props }){
   return (
     <div className={`p-4 ${className}`} {...props}>
       {children}
@@ -8,4 +8,4 @@ function CardContent ({ children, className = '', ...props }){
   );
 };
 
-export default CardContent;
+export default PreviewCardContent;

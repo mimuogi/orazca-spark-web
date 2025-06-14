@@ -1,40 +1,28 @@
+import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Layout from './pages/Layout';
+import PrivateRoute from './components//PrivateRoute';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import PostsList from './pages/PostsList';
-import PostDetail from './pages/PostDetail';
-import DeckList from './pages/DeckList';
-import DeckDetail from './pages/DeckDetail';
-import Profile from './pages/UserProfile';
-import DeckCollection from './pages/DeckCollection';
-import DeckTools from './pages/DeckTools';
-import ManaTool from './pages/ManaTool';
-import CalculatorsPage from './pages/CalculatorsPage';
-import CardDetails from './pages/CardDetails';
-import './App.css'; // Global styles
+import LoginPage from './pages/users/LoginPage';
+import RegisterPage from './pages/users/RegisterPage';
+import ProfilePage from './pages/profile/ProfilePage';
+import EditProfilePage from './pages/profile/EditProfilePage';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/posts" element={<PostsList />} />
-        <Route path="/posts/:id" element={<PostDetail />} />
-        <Route path="/decks" element={<DeckList />} />
-        <Route path="/decks/:id" element={<DeckDetail />} />
-        <Route path="/deck-collection" element={<DeckCollection />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/tools" element={<DeckTools/>}/>
-        <Route path="/tools/mana" element={<ManaTool />} />
-        <Route path="/tools/calculators" element={<CalculatorsPage />} />
-        <Route path="/card/:name" element={<CardDetails />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+
+        <Route path="profile/:id" element={<ProfilePage />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route path="profile/:id/edit" element={<EditProfilePage />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 

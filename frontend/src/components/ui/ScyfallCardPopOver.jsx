@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function CardMention({ cardName }) {
+export function ScryfallCardPopOver({ cardName }) {
   const [imageUrl, setImageUrl] = useState(null);
   const [showImage, setShowImage] = useState(false);
   const navigate = useNavigate();
@@ -35,4 +35,4 @@ export function CardMention({ cardName }) {
   );
 }
 
-export default CardMention;
+export default ScryfallCardPopOver;

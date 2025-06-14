@@ -31,3 +31,5 @@ const postsRoutes = require('./routes/posts');
 app.use('/api/posts', postsRoutes)
 const usersRoutes = require('./routes/users');
 app.use('/api/users', usersRoutes)
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);

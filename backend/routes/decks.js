@@ -3,9 +3,19 @@ const router = express.Router();
 const Deck = require('../models/Deck');
 const { verifyToken } = require('../middleware/authMiddleware');
 
-// GET all
+// GET all públicos
 router.get('/', async (req, res) => {
-  const decks = await Deck.find().populate('userId', 'username');
+  const decks = await Deck.find({ status: 'public' })
+    .populate('userId', 'username')
+    .sort({ createdAt: -1 });
+  res.json(decks);
+});
+
+// GET solo del usuario
+router.get('/mine', verifyToken, async (req, res) => {
+  const decks = await Deck.find({ userId: req.user.userId })
+    .populate('userId', 'username')
+    .sort({ createdAt: -1 });
   res.json(decks);
 });
 
@@ -32,7 +42,7 @@ router.put('/:id', verifyToken, async (req, res) => {
   if (!deck) return res.status(404).json({ error: 'Mazo no encontrado' });
   if (deck.userId.toString() !== req.user.userId) return res.status(403).json({ error: 'No autorizado' });
 
-  Object.assign(deck, req.body);
+  Object.assign(deck, req.body, { updatedAt: Date.now() });
   await deck.save();
   res.json(deck);
 });

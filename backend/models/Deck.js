@@ -15,7 +15,13 @@ const DeckSchema = new mongoose.Schema({
   sideboard: [CardSchema],
   maybeboard: [CardSchema],
   commander: [CardSchema],
+  status: {
+    type: String,
+    enum: ['public', 'private', 'draft'],
+    default: 'draft',
+  },
   createdAt: { type: Date, default: Date.now },
+  updatedAt: {type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Deck', DeckSchema);

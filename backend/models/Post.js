@@ -18,11 +18,17 @@ const PostSchema = new mongoose.Schema({
   coverImage: { type: String, required: false },
   contentMarkdown: { type: String, required: true },
   tags: [String],
+  status: {
+    type: String,
+    enum: ['public', 'private', 'draft'],
+    default: 'draft',
+  },
   votes: [VoteSchema],
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 },
   comments: [CommentSchema],
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: {type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Post', PostSchema);
