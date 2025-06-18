@@ -30,9 +30,12 @@ router.get('/mine', verifyToken, async (req, res) => {
 // GET por ID
 router.get('/:id', async (req, res) => {
   const post = await Post.findById(req.params.id).populate('authorId', 'username');
-  if (!post) return res.status(404).json({ error: 'Post no encontrado' });
+  if (!post || post.status !== 'public') {
+    return res.status(404).json({ error: 'Post no encontrado o no es público' });
+  }
   res.json(post);
 });
+
 
 // CREATE
 router.post('/', verifyToken, async (req, res) => {

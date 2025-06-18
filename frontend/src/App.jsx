@@ -10,6 +10,8 @@ import EditProfilePage from './pages/profile/EditProfilePage';
 import PublicPostsPage from './pages/posts/PublicPostsPage';
 import UserPostsPage from './pages/posts/UserPostsPage';
 import PostEditor from './pages/posts/PostEditor';
+import PostDetail from './pages/posts/PostDetail';
+
 
 function App() {
   return (
@@ -22,6 +24,12 @@ function App() {
         <Route path="profile/:id" element={<ProfilePage />} />
 
         <Route path="posts" element={<PublicPostsPage />} />
+        <Route path="posts/:id" element={<PostDetail />} />
+        
+        {/* Ruta para manejar 404 */}
+        <Route path="*" element={<h1 className="text-center mt-10">Página no encontrada</h1>} />
+
+        {/* Rutas privadas */}
 
         <Route element={<PrivateRoute />}>
           <Route path="profile/:id/edit" element={<EditProfilePage />} />
