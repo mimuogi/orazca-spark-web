@@ -28,7 +28,7 @@ router.get('/mine', verifyToken, async (req, res) => {
 });
 
 // GET por ID
-router.get('/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
   const post = await Post.findById(req.params.id).populate('authorId', 'username');
   if (!post || post.status !== 'public') {
     return res.status(404).json({ error: 'Post no encontrado o no es público' });
@@ -36,6 +36,36 @@ router.get('/:id', async (req, res) => {
   res.json(post);
 });
 
+// GET por slug
+router.get('/:slug', async (req, res) => {
+  try {
+    console.log('Buscando post con slug:', req.params.slug);
+
+    const post = await Post.findOne({
+      slug: req.params.slug,
+      status: 'public'
+    }).populate('authorId', 'username')
+    .populate('comments.userId', 'username');
+
+    if (!post) {
+      console.warn(`No se encontró un post público con el slug: ${req.params.slug}`);
+      return res.status(404).json({ error: 'Post no encontrado o no es público' });
+    }
+
+    res.json(post);
+  } catch (err) {
+    console.error('Error al buscar post por slug:', err.message);
+    res.status(500).json({ error: 'Error interno al buscar post' });
+  }
+});
+
+//Get por Autor
+router.get('/author/:authorId', async (req, res) => {
+  const posts = await Post.find({ authorId: req.params.authorId, status: 'public' })
+    .populate('authorId', 'username')
+    .sort({ createdAt: -1 });
+  res.json(posts);
+});
 
 // CREATE
 router.post('/', verifyToken, async (req, res) => {

@@ -24,7 +24,7 @@ function App() {
         <Route path="profile/:id" element={<ProfilePage />} />
 
         <Route path="posts" element={<PublicPostsPage />} />
-        <Route path="posts/:id" element={<PostDetail />} />
+        <Route path="posts/:slug" element={<PostDetail />} />
         
         {/* Ruta para manejar 404 */}
         <Route path="*" element={<h1 className="text-center mt-10">Página no encontrada</h1>} />

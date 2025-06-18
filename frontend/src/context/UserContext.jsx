@@ -23,7 +23,8 @@ export function UserProvider({ children }) {
   const login = (token) => {
   localStorage.setItem('token', token);
   setToken(token);
-  axios.get('/api/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.get('/api/auth/me')
     .then(res => setUser(res.data))
     .catch(() => setUser(null));
 };
@@ -32,6 +33,8 @@ const logout = () => {
   localStorage.removeItem('token');
   setToken(null);
   setUser(null);
+  delete axios.defaults.headers.common['Authorization'];
+  window.location.href = '/'; 
 };
 
 
