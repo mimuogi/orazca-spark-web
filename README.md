@@ -8,7 +8,6 @@ The project features:
 - 🌐 A frontend built in React
 - 📝 Markdown-based posts and deck sharing
 - 👍 Likes, comments, user authentication
-- 🧪 Full testing via curl/bash script
 
 ---
 
