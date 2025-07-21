@@ -16,24 +16,6 @@ const UserSchema = new mongoose.Schema({
   location: { type: String, default: '' },
   website: { type: String, default: '' },
   birthday: { type: Date, default: null },
-  preferences: {
-    theme: { type: String, enum: ['light', 'dark'], default: 'light' },
-    language: { type: String, default: 'en' }
-  },
-  notifications: {
-    email: { type: Boolean, default: true },
-    push: { type: Boolean, default: true }
-  },
-  achievements: [{
-    title: { type: String, required: true },
-    description: { type: String, default: '' },
-    dateEarned: { type: Date, default: Date.now }
-  }],
-  badges: [{
-    name: { type: String, required: true },
-    description: { type: String, default: '' },
-    dateEarned: { type: Date, default: Date.now }
-  }],
   socialLinks: {
     twitter: { type: String, default: '' },
     facebook: { type: String, default: '' },
@@ -44,7 +26,6 @@ const UserSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// 🧹 Eliminar contenido relacionado antes de borrar el usuario
 UserSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
   const userId = this._id;
 
